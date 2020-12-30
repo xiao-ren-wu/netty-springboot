@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e52dbbeb-1752-464e-9840-2c50b1e51a31" name="Default Changelist" comment="" />
+    <list default="true" id="e52dbbeb-1752-464e-9840-2c50b1e51a31" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,9 +26,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.NettyServerApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -33,6 +37,20 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="netty-client" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.ywb.netty.client.NettyClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="netty-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.ywb.netty.server.NettyServerApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -53,6 +71,8 @@
       <workItem from="1609254582853" duration="464000" />
       <workItem from="1609255181063" duration="327000" />
       <workItem from="1609255528478" duration="476000" />
+      <workItem from="1609340849273" duration="352000" />
+      <workItem from="1609341225568" duration="154000" />
     </task>
     <servers />
   </component>

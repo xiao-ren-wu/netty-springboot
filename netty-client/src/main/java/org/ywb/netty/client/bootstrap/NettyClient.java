@@ -23,8 +23,6 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class NettyClient implements CommandLineRunner {
 
-    public static final int MAX_RETRY = 5;
-
     @Resource
     private NettyClientProperties nettyClientProperties;
 
@@ -46,7 +44,7 @@ public class NettyClient implements CommandLineRunner {
                     }
                 });
 
-        connect(bootstrap, nettyClientProperties.getHost(), nettyClientProperties.getPort(), nettyClientProperties.getRetry());
+        connect(bootstrap, nettyClientProperties.getHost(), nettyClientProperties.getPort(), 1);
     }
 
 
@@ -55,7 +53,7 @@ public class NettyClient implements CommandLineRunner {
                 .addListener(future -> {
                     if (future.isSuccess()) {
                         log.info("服务端链接成功");
-                    } else if (retry > MAX_RETRY) {
+                    } else if (retry > nettyClientProperties.getMaxRetry()) {
                         log.error("重试次数已经用完");
                         System.exit(0);
                     } else {

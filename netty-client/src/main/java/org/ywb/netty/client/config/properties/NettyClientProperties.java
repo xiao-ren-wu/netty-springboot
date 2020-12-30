@@ -25,5 +25,5 @@ public class NettyClientProperties {
     /**
      * 重连次数
      */
-    private Integer retry;
+    private Integer maxRetry;
 }

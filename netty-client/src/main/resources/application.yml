@@ -1,4 +1,4 @@
 netty-client:
   host: localhost
   port: 8000
-  retry: 5
+  max-retry: 5
