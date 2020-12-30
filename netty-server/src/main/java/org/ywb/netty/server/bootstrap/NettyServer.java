@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.ywb.netty.server.config.properties.NettyServerProperties;
+import org.ywb.netty.server.handler.FirstServerHandler;
 
 import javax.annotation.Resource;
 
@@ -43,7 +44,7 @@ public class NettyServer implements CommandLineRunner {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
-
+                        ch.pipeline().addLast(new FirstServerHandler());
                     }
                 })
                 .bind(port)

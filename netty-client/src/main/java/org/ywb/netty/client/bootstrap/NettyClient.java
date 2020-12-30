@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.ywb.netty.client.config.properties.NettyClientProperties;
+import org.ywb.netty.client.handler.FirstClientHandler;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,6 @@ public class NettyClient implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         NioEventLoopGroup workGroup = new NioEventLoopGroup();
-
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(workGroup)
                 .channel(NioSocketChannel.class)
@@ -40,7 +40,8 @@ public class NettyClient implements CommandLineRunner {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-
+                        ch.pipeline()
+                                .addLast(new FirstClientHandler());
                     }
                 });
 
