@@ -7,7 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.ywb.netty.common.codec.PacketCodeC;
 import org.ywb.netty.common.packet.request.LoginRequestPacket;
 import org.ywb.netty.common.packet.response.LoginResponsePacket;
+import org.ywb.netty.common.packet.response.MessageResponsePacket;
 import org.ywb.netty.common.protocol.Packet;
+import org.ywb.netty.common.utils.LoginUtil;
 
 /**
  * @author yuwenbo1
@@ -15,7 +17,7 @@ import org.ywb.netty.common.protocol.Packet;
  * @since 1.0.0
  */
 @Slf4j
-public class LoginClientHandler extends ChannelInboundHandlerAdapter {
+public class MessageClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -32,7 +34,16 @@ public class LoginClientHandler extends ChannelInboundHandlerAdapter {
         Packet packet = PacketCodeC.decode((ByteBuf) msg);
         if (packet instanceof LoginResponsePacket) {
             LoginResponsePacket loginResponsePacket = (LoginResponsePacket) packet;
-            log.info("{}:{}", loginResponsePacket.getSuccess(),loginResponsePacket.getReason());
+            log.info("{}:{}", loginResponsePacket.getSuccess(), loginResponsePacket.getReason());
+            if(loginResponsePacket.getSuccess()){
+                // 在channel中插入登录标记
+                log.info("登录成功，插入登录标记");
+                LoginUtil.markAsLogin(ctx.channel());
+            }
+        } else if (packet instanceof MessageResponsePacket) {
+            MessageResponsePacket responsePacket = (MessageResponsePacket) packet;
+            log.info("服务端响应:{}:{}", responsePacket.getSuccess(), responsePacket.getReason());
         }
     }
+
 }

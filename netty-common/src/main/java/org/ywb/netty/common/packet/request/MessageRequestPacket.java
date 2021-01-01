@@ -12,7 +12,7 @@ import org.ywb.netty.common.protocol.Packet;
  */
 @Data
 @Component
-public class MessageRequestHandler implements Packet {
+public class MessageRequestPacket implements Packet {
 
     private String message;
 

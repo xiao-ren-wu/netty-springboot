@@ -7,6 +7,8 @@ import org.ywb.netty.common.enums.SerializerAlgorithm;
 import org.ywb.netty.common.protocol.Packet;
 import org.ywb.netty.common.protocol.Serializer;
 
+import java.util.Objects;
+
 /**
  * @author yuwenbo1
  * @date 2021/1/1 1:43 下午 星期五
@@ -20,11 +22,12 @@ public class PacketCodeC {
     /**
      * 魔数
      */
-    private static final int MAGIC_NUMBER = 0x12345678;
+    public static final int MAGIC_NUMBER = 0x12345678;
 
-    public static ByteBuf encode(Packet packet) {
+
+    public static ByteBuf encode(Packet packet, ByteBuf byteBuf) {
         // 创建ByteBuf对象
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.buffer();
+        byteBuf = Objects.isNull(byteBuf) ? ByteBufAllocator.DEFAULT.buffer() : byteBuf;
         // 获取序列化使用的算法和指令
         SerializerAlgorithm serializerAlgorithm = packet.serializerAlgorithm();
         Command command = packet.command();
@@ -39,6 +42,10 @@ public class PacketCodeC {
         byteBuf.writeInt(serializeObj.length);
         byteBuf.writeBytes(serializeObj);
         return byteBuf;
+    }
+
+    public static ByteBuf encode(Packet packet) {
+        return encode(packet, null);
     }
 
     public static Packet decode(ByteBuf byteBuf) {

@@ -1,6 +1,9 @@
 package org.ywb.netty.client.bootstrap;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -10,10 +13,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.ywb.netty.client.config.properties.NettyClientProperties;
-import org.ywb.netty.client.handler.FirstClientHandler;
-import org.ywb.netty.client.handler.LoginClientHandler;
+import org.ywb.netty.client.handler.LoginResponseHandler;
+import org.ywb.netty.client.handler.MessageResponseHandler;
+import org.ywb.netty.common.codec.PacketCodeC;
+import org.ywb.netty.common.handler.PacketDecodeHandler;
+import org.ywb.netty.common.handler.PacketEncodeHandler;
+import org.ywb.netty.common.handler.Splitter;
+import org.ywb.netty.common.packet.request.MessageRequestPacket;
+import org.ywb.netty.common.utils.LoginUtil;
 
 import javax.annotation.Resource;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -42,7 +52,11 @@ public class NettyClient implements CommandLineRunner {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new LoginClientHandler());
+                                .addLast(new Splitter())
+                                .addLast(new PacketDecodeHandler())
+                                .addLast(new LoginResponseHandler())
+                                .addLast(new MessageResponseHandler())
+                                .addLast(new PacketEncodeHandler());
                     }
                 });
 
@@ -55,6 +69,8 @@ public class NettyClient implements CommandLineRunner {
                 .addListener(future -> {
                     if (future.isSuccess()) {
                         log.info("服务端链接成功");
+                        log.info("启动控制台线程");
+                        startConsoleThread(((ChannelFuture) future).channel());
                     } else if (retry > nettyClientProperties.getMaxRetry()) {
                         log.error("重试次数已经用完");
                         System.exit(0);
@@ -66,6 +82,24 @@ public class NettyClient implements CommandLineRunner {
                                 .schedule(() -> connect(bootstrap, host, port, retry + 1), delay, TimeUnit.SECONDS);
                     }
                 });
+    }
+
+    @SuppressWarnings("all")
+    private void startConsoleThread(Channel channel) {
+        new Thread(() -> {
+            while (!Thread.interrupted()) {
+                if (LoginUtil.hasLogin(channel)) {
+                    log.info("输入消息发送至服务端");
+                    Scanner scanner = new Scanner(System.in);
+                    String line = scanner.nextLine();
+                    MessageRequestPacket messageRequestPacket = new MessageRequestPacket();
+                    messageRequestPacket.setMessage(line);
+                    ByteBuf byteBuf = PacketCodeC.encode(messageRequestPacket);
+                    channel.writeAndFlush(byteBuf);
+                }
+            }
+
+        }).start();
     }
 
 }

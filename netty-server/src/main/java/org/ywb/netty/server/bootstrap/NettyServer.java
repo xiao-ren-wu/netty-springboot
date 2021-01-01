@@ -9,9 +9,13 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.ywb.netty.common.handler.PacketDecodeHandler;
+import org.ywb.netty.common.handler.PacketEncodeHandler;
+import org.ywb.netty.common.handler.Splitter;
 import org.ywb.netty.server.config.properties.NettyServerProperties;
-import org.ywb.netty.server.handler.FirstServerHandler;
-import org.ywb.netty.server.handler.LoginServerHandler;
+import org.ywb.netty.server.handler.LoginRequestHandler;
+import org.ywb.netty.server.handler.MessageRequestHandler;
+import org.ywb.netty.server.handler.MessageServerHandler;
 
 import javax.annotation.Resource;
 
@@ -45,7 +49,12 @@ public class NettyServer implements CommandLineRunner {
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new LoginServerHandler());
+                        ch.pipeline()
+                                .addLast(new Splitter())
+                                .addLast(new PacketDecodeHandler())
+                                .addLast(new LoginRequestHandler())
+                                .addLast(new MessageRequestHandler())
+                                .addLast(new PacketEncodeHandler());
                     }
                 })
                 .bind(port)
