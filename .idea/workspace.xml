@@ -5,10 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e52dbbeb-1752-464e-9840-2c50b1e51a31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/FirstClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/FirstServerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/LoginClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/codec/PacketCodeC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/enums/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/enums/CommandPacketMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/enums/SerializerAlgorithm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/request/LoginRequestPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/request/MessageRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/LoginResponsePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/MessageResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/protocol/Packet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/protocol/ResponsePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/protocol/Serializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/serializer/GsonSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/LoginUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-common/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/LoginServerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-server/src/test/java/org/ywb/netty/server/ByteBufTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/bootstrap/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/bootstrap/NettyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/netty-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/bootstrap/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/bootstrap/NettyServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -45,7 +67,20 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Spring Boot.NettyClientApplication">
+  <component name="RunManager" selected="Spring Boot.NettyServerApplication">
+    <configuration name="Command" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.ywb.netty.common.enums.Command" />
+      <module name="netty-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ywb.netty.common.enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -57,9 +92,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ByteBufTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="netty-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ywb.netty.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.ywb.netty.server" />
+      <option name="MAIN_CLASS_NAME" value="org.ywb.netty.server.ByteBufTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyCommonConfigurationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="netty-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ywb.netty.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.ywb.netty.common" />
+      <option name="MAIN_CLASS_NAME" value="org.ywb.netty.common.NettyCommonConfigurationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="NettyClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="netty-client" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.ywb.netty.client.NettyClientApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NettyCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="netty-common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.ywb.netty.common.NettyCommonConfiguration" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -71,6 +145,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.NettyCommonConfigurationTests.contextLoads" />
+        <item itemvalue="Application.Command" />
+        <item itemvalue="JUnit.ByteBufTest.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -89,7 +170,7 @@
       <workItem from="1609255528478" duration="476000" />
       <workItem from="1609340849273" duration="352000" />
       <workItem from="1609341225568" duration="154000" />
-      <workItem from="1609341409774" duration="1952000" />
+      <workItem from="1609341409774" duration="19395000" />
     </task>
     <servers />
   </component>
@@ -107,5 +188,21 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/netty-common/src/test/java/org/ywb/netty/common/NettyCommonConfigurationTests.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/LoginClientHandler.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

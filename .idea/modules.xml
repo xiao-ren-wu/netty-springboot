@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/netty-client/netty-client.iml" filepath="$PROJECT_DIR$/netty-client/netty-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-common/netty-common.iml" filepath="$PROJECT_DIR$/netty-common/netty-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty-server/netty-server.iml" filepath="$PROJECT_DIR$/netty-server/netty-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/netty-springboot.iml" filepath="$PROJECT_DIR$/.idea/netty-springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-netty/springboot-netty.iml" filepath="$PROJECT_DIR$/springboot-netty/springboot-netty.iml" />

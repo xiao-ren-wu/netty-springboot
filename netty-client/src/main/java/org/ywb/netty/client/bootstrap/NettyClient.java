@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.ywb.netty.client.config.properties.NettyClientProperties;
 import org.ywb.netty.client.handler.FirstClientHandler;
+import org.ywb.netty.client.handler.LoginClientHandler;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
@@ -41,7 +42,7 @@ public class NettyClient implements CommandLineRunner {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline()
-                                .addLast(new FirstClientHandler());
+                                .addLast(new LoginClientHandler());
                     }
                 });
 
