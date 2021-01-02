@@ -6,20 +6,22 @@ import org.springframework.stereotype.Component;
 import org.ywb.netty.common.enums.Command;
 import org.ywb.netty.common.protocol.ResponsePacket;
 
+import java.util.List;
+
 /**
  * @author yuwenbo1
- * @date 2021/1/1 7:31 下午 星期五
+ * @date 2021/1/2 5:34 下午 星期六
  * @since 1.0.0
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Component
-public class MessageResponsePacket extends ResponsePacket {
+public class GroupListResponsePacket extends ResponsePacket {
 
-    private String message;
+    private List<String> users;
 
     @Override
     public Command command() {
-        return Command.RESPONSE_MESSAGE;
+        return Command.RESPONSE_LIST_GROUP;
     }
 }

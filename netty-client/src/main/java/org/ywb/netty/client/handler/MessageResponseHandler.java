@@ -15,6 +15,11 @@ public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageR
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageResponsePacket messageResponsePacket) throws Exception {
-        log.info("服务端响应:{}:{}", messageResponsePacket.getSuccess(), messageResponsePacket.getReason());
+        Boolean success = messageResponsePacket.getSuccess();
+        if (success) {
+            log.info(messageResponsePacket.getMessage());
+        } else {
+            log.error(messageResponsePacket.getReason());
+        }
     }
 }

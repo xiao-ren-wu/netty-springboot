@@ -13,9 +13,7 @@ import org.ywb.netty.common.handler.PacketDecodeHandler;
 import org.ywb.netty.common.handler.PacketEncodeHandler;
 import org.ywb.netty.common.handler.Splitter;
 import org.ywb.netty.server.config.properties.NettyServerProperties;
-import org.ywb.netty.server.handler.LoginRequestHandler;
-import org.ywb.netty.server.handler.MessageRequestHandler;
-import org.ywb.netty.server.handler.MessageServerHandler;
+import org.ywb.netty.server.handler.*;
 
 import javax.annotation.Resource;
 
@@ -53,6 +51,10 @@ public class NettyServer implements CommandLineRunner {
                                 .addLast(new Splitter())
                                 .addLast(new PacketDecodeHandler())
                                 .addLast(new LoginRequestHandler())
+                                .addLast(new AuthHandler())
+                                .addLast(new CreateGroupRequestHandler())
+                                .addLast(new JoinGroupRequestHandler())
+                                .addLast(new QuitGroupRequestHandler())
                                 .addLast(new MessageRequestHandler())
                                 .addLast(new PacketEncodeHandler());
                     }

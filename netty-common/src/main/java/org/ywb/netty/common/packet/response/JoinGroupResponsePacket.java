@@ -8,18 +8,15 @@ import org.ywb.netty.common.protocol.ResponsePacket;
 
 /**
  * @author yuwenbo1
- * @date 2021/1/1 7:31 下午 星期五
+ * @date 2021/1/2 5:03 下午 星期六
  * @since 1.0.0
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Component
-public class MessageResponsePacket extends ResponsePacket {
-
-    private String message;
-
+public class JoinGroupResponsePacket extends ResponsePacket {
     @Override
     public Command command() {
-        return Command.RESPONSE_MESSAGE;
+        return Command.RESPONSE_JOIN_GROUP;
     }
 }

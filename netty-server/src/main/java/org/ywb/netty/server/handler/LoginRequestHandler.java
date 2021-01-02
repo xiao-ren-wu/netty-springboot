@@ -1,12 +1,18 @@
 package org.ywb.netty.server.handler;
 
-import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.ywb.netty.common.codec.PacketCodeC;
+import org.apache.logging.log4j.util.Strings;
+import org.springframework.util.Assert;
 import org.ywb.netty.common.packet.request.LoginRequestPacket;
 import org.ywb.netty.common.packet.response.LoginResponsePacket;
+import org.ywb.netty.common.utils.LoginUtil;
+import org.ywb.netty.common.utils.Session;
+import org.ywb.netty.common.utils.SessionUtil;
+
+import java.util.UUID;
 
 /**
  * @author yuwenbo1
@@ -20,9 +26,17 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, LoginRequestPacket loginRequestPacket) throws Exception {
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         if (valid(loginRequestPacket)) {
+            // bind session
+            Session session = Session.builder()
+                    .userId(UUID.randomUUID().toString())
+                    .username(loginRequestPacket.getUsername())
+                    .build();
+            SessionUtil.bindSession(session, channelHandlerContext.channel());
+
             log.info("[{}]登录成功", loginRequestPacket.getUsername());
             loginResponsePacket.setSuccess(true);
             loginResponsePacket.setReason("登录成功");
+            LoginUtil.markAsLogin(channelHandlerContext.channel());
         } else {
             log.error("[{}]登录失败", loginRequestPacket.getUsername());
             loginResponsePacket.setSuccess(false);
@@ -31,8 +45,14 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
         channelHandlerContext.channel().writeAndFlush(loginResponsePacket);
     }
 
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        // 用户断开链接清除session
+        SessionUtil.unBindSession(ctx.channel());
+    }
+
     private boolean valid(LoginRequestPacket loginRequestPacket) {
-        return true;
+        return Strings.isNotBlank(loginRequestPacket.getUsername());
     }
 
 }
