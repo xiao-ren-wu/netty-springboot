@@ -60,6 +60,7 @@ public class NettyClient implements CommandLineRunner {
                                 .addLast(new CreateGroupResponseHandler())
                                 .addLast(new JoinGroupResponseHandler())
                                 .addLast(new QuitGroupResponseHandler())
+                                .addLast(new GroupListResponseHandler())
                                 .addLast(new MessageResponseHandler())
                                 .addLast(new PacketEncodeHandler());
                     }

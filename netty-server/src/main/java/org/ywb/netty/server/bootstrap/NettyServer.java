@@ -55,6 +55,7 @@ public class NettyServer implements CommandLineRunner {
                                 .addLast(new CreateGroupRequestHandler())
                                 .addLast(new JoinGroupRequestHandler())
                                 .addLast(new QuitGroupRequestHandler())
+                                .addLast(new GroupListRequestHandler())
                                 .addLast(new MessageRequestHandler())
                                 .addLast(new PacketEncodeHandler());
                     }

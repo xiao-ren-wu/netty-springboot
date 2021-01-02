@@ -1,12 +1,9 @@
 package org.ywb.netty.common.utils;
 
-import com.google.gson.Gson;
 import io.netty.channel.Channel;
-import org.springframework.boot.web.servlet.server.Session;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
@@ -67,5 +64,16 @@ public class GroupUtil {
             GROUP.remove(quitGroup);
         }
         return true;
+    }
+
+    public static List<String> groupList(String groupName) {
+        Set<Channel> channels = GROUP.get(groupName);
+        if (Objects.isNull(channels) || channels.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return channels.stream()
+                .map(SessionUtil::getSession)
+                .map(Session::getUsername)
+                .collect(Collectors.toList());
     }
 }

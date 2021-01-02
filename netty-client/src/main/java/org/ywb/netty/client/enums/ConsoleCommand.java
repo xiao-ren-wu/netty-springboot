@@ -21,5 +21,5 @@ public enum ConsoleCommand {
     /**
      * 加入群组
      */
-    joinGroup, quitGroup;
+    joinGroup, quitGroup, groupList;
 }

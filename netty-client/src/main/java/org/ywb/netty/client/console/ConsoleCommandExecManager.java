@@ -44,7 +44,13 @@ public class ConsoleCommandExecManager implements ApplicationContextAware {
 
     public void execCommand(Scanner scanner, Channel channel) {
         String command = scanner.nextLine();
-        ConsoleCommandExec commandExec = commandExecContainer.get(ConsoleCommand.valueOf(command));
+        ConsoleCommandExec commandExec = null;
+        try {
+            commandExec = commandExecContainer.get(ConsoleCommand.valueOf(command));
+        } catch (IllegalArgumentException e) {
+            log.error("指令[" + command + "]未找到");
+            return;
+        }
         commandExec.exec(scanner, channel);
     }
 }

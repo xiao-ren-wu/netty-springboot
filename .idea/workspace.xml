@@ -5,37 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e52dbbeb-1752-464e-9840-2c50b1e51a31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/ConsoleCommandExec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/ConsoleCommandExecManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/CreateGroupConsoleCommandExec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/JoinGroupConsoleCommandExec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/LoginConsoleCommandExec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/annos/Console.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/enums/ConsoleCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/CreateGroupResponseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/JoinGroupResponseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/handler/LifeCycleHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/request/CreateGroupRequestPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/request/JoinGroupRequestPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/CreateGroupResponsePacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/JoinGroupResponsePacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/Attributes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/GroupUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/MessageUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/Session.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/SessionUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/AuthHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/CreateGroupRequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/JoinGroupRequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/GroupListConsoleCommandExec.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/GroupListResponseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/GroupListRequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/bootstrap/NettyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/bootstrap/NettyClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/LoginResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/LoginResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/MessageResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/handler/MessageResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/enums/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/enums/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/MessageResponsePacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/packet/response/MessageResponsePacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/ConsoleCommandExecManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/console/ConsoleCommandExecManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/enums/ConsoleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-client/src/main/java/org/ywb/netty/client/enums/ConsoleCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/GroupUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/GroupUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/MessageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-common/src/main/java/org/ywb/netty/common/utils/MessageUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/bootstrap/NettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/bootstrap/NettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/LoginRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/LoginRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/MessageRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/netty-server/src/main/java/org/ywb/netty/server/handler/MessageRequestHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +61,7 @@
       <recent name="org.ywb.netty.client" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.NettyServerApplication">
+  <component name="RunManager" selected="Spring Boot.NettyClientApplication">
     <configuration name="Command" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.ywb.netty.common.enums.Command" />
       <module name="netty-common" />
@@ -185,7 +164,7 @@
       <workItem from="1609255528478" duration="476000" />
       <workItem from="1609340849273" duration="352000" />
       <workItem from="1609341225568" duration="154000" />
-      <workItem from="1609341409774" duration="39217000" />
+      <workItem from="1609341409774" duration="42240000" />
     </task>
     <servers />
   </component>

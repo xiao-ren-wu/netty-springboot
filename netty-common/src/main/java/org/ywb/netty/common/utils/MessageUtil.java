@@ -4,6 +4,7 @@ import io.netty.channel.Channel;
 import org.ywb.netty.common.protocol.ResponsePacket;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * @author yuwenbo1
@@ -12,7 +13,9 @@ import java.util.Collection;
  */
 public class MessageUtil {
 
-    public static void broadcast(ResponsePacket responsePacket, Collection<Channel> channels){
-        channels.forEach(channel -> channel.writeAndFlush(responsePacket));
+    public static void broadcast(ResponsePacket responsePacket, Collection<Channel> channels) {
+        if (Objects.nonNull(channels)) {
+            channels.forEach(channel -> channel.writeAndFlush(responsePacket));
+        }
     }
 }
