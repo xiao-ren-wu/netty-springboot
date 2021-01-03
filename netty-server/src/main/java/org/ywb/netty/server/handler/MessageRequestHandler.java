@@ -1,9 +1,12 @@
 package org.ywb.netty.server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.packet.request.MessageRequestPacket;
 import org.ywb.netty.common.packet.response.MessageResponsePacket;
 import org.ywb.netty.common.utils.SessionUtil;
@@ -16,6 +19,8 @@ import java.util.Objects;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRequestPacket> {
 
     @Override

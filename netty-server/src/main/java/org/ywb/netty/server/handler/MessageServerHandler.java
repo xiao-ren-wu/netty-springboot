@@ -1,16 +1,17 @@
 package org.ywb.netty.server.handler;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.codec.PacketCodeC;
 import org.ywb.netty.common.packet.request.LoginRequestPacket;
 import org.ywb.netty.common.packet.request.MessageRequestPacket;
 import org.ywb.netty.common.packet.response.LoginResponsePacket;
 import org.ywb.netty.common.packet.response.MessageResponsePacket;
 import org.ywb.netty.common.protocol.Packet;
-import org.ywb.netty.common.utils.LoginUtil;
 
 /**
  * @author yuwenbo1
@@ -18,6 +19,8 @@ import org.ywb.netty.common.utils.LoginUtil;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class MessageServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override

@@ -6,6 +6,7 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,36 @@ public class NettyServer implements CommandLineRunner {
     @Resource
     private NettyServerProperties nettyServerProperties;
 
+    @Resource
+    private ImIdleStateHandler imIdleStateHandler;
+
+    @Resource
+    private LoginRequestHandler loginRequestHandler;
+
+    @Resource
+    private AuthHandler authHandler;
+
+    @Resource
+    private CreateGroupRequestHandler createGroupRequestHandler;
+
+    @Resource
+    private JoinGroupRequestHandler joinGroupRequestHandler;
+
+    @Resource
+    private QuitGroupRequestHandler quitGroupRequestHandler;
+
+    @Resource
+    private GroupListRequestHandler groupListRequestHandler;
+
+    @Resource
+    private SendToGroupRequestHandler sendToGroupRequestHandler;
+
+    @Resource
+    private MessageRequestHandler messageRequestHandler;
+
+    @Resource
+    private HeartbeatRequestHandler heartbeatRequestHandler;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -48,16 +79,18 @@ public class NettyServer implements CommandLineRunner {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         ch.pipeline()
+                                .addLast(imIdleStateHandler)
                                 .addLast(new Splitter())
                                 .addLast(new PacketDecodeHandler())
-                                .addLast(new LoginRequestHandler())
-                                .addLast(new AuthHandler())
-                                .addLast(new CreateGroupRequestHandler())
-                                .addLast(new JoinGroupRequestHandler())
-                                .addLast(new QuitGroupRequestHandler())
-                                .addLast(new GroupListRequestHandler())
-                                .addLast(new SendToGroupRequestHandler())
-                                .addLast(new MessageRequestHandler())
+                                .addLast(loginRequestHandler)
+                                .addLast(authHandler)
+                                .addLast(heartbeatRequestHandler)
+                                .addLast(createGroupRequestHandler)
+                                .addLast(joinGroupRequestHandler)
+                                .addLast(quitGroupRequestHandler)
+                                .addLast(groupListRequestHandler)
+                                .addLast(sendToGroupRequestHandler)
+                                .addLast(messageRequestHandler)
                                 .addLast(new PacketEncodeHandler());
                     }
                 })

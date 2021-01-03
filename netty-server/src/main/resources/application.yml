@@ -1,2 +1,6 @@
 netty-server:
   port: 8000
+  idle-state:
+    reader: 15
+    writer: 15
+    all-time: 0

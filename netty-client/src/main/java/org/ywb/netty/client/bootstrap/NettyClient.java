@@ -53,6 +53,7 @@ public class NettyClient implements CommandLineRunner {
                         ch.pipeline()
                                 .addLast(new Splitter())
                                 .addLast(new PacketDecodeHandler())
+                                .addLast(new HeartbeatResponseHandler())
                                 .addLast(new LoginResponseHandler())
                                 .addLast(new CreateGroupResponseHandler())
                                 .addLast(new JoinGroupResponseHandler())

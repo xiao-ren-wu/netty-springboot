@@ -3,6 +3,8 @@ package org.ywb.netty.common.handler;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.codec.PacketCodeC;
 import org.ywb.netty.common.protocol.Packet;
 

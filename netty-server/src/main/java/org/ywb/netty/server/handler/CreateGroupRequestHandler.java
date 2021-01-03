@@ -1,9 +1,12 @@
 package org.ywb.netty.server.handler;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.packet.request.CreateGroupRequestPacket;
 import org.ywb.netty.common.packet.response.CreateGroupResponsePacket;
 import org.ywb.netty.common.protocol.ResponsePacket;
@@ -20,6 +23,8 @@ import java.util.Set;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class CreateGroupRequestHandler extends SimpleChannelInboundHandler<CreateGroupRequestPacket> {
 
     @Override

@@ -1,8 +1,10 @@
 package org.ywb.netty.server.handler;
 
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.packet.request.QuitGroupRequestPacket;
 import org.ywb.netty.common.packet.response.QuitGroupResponsePacket;
 import org.ywb.netty.common.utils.GroupUtil;
@@ -15,6 +17,8 @@ import org.ywb.netty.common.utils.SessionUtil;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class QuitGroupRequestHandler extends SimpleChannelInboundHandler<QuitGroupRequestPacket> {
 
     @Override

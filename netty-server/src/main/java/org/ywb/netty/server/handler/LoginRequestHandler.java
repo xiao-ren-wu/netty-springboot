@@ -1,11 +1,11 @@
 package org.ywb.netty.server.handler;
 
-import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.util.Assert;
+import org.springframework.stereotype.Component;
 import org.ywb.netty.common.packet.request.LoginRequestPacket;
 import org.ywb.netty.common.packet.response.LoginResponsePacket;
 import org.ywb.netty.common.utils.LoginUtil;
@@ -20,6 +20,8 @@ import java.util.UUID;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginRequestPacket> {
 
     @Override

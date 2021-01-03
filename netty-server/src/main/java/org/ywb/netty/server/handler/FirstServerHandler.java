@@ -1,9 +1,11 @@
 package org.ywb.netty.server.handler;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +17,8 @@ import java.nio.charset.StandardCharsets;
  * @since 1.0.0
  */
 @Slf4j
+@Component
+@ChannelHandler.Sharable
 public class FirstServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override

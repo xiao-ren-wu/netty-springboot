@@ -49,7 +49,14 @@ public enum Command {
      * 发送消息到群组
      */
     REQUEST_SEND_TO_GROUP(13),
-    RESPONSE_SEND_TO_GROUP(14);
+    RESPONSE_SEND_TO_GROUP(14),
+
+    /**
+     * 心跳包
+     */
+    REQUEST_HEARTBEAT(15),
+    RESPONSE_HEARTBEAT(16);
+
     Byte code;
 
     Command(int code) {
