@@ -45,7 +45,11 @@ public enum Command {
      */
     REQUEST_LIST_GROUP(11),
     RESPONSE_LIST_GROUP(12),
-    ;
+    /**
+     * 发送消息到群组
+     */
+    REQUEST_SEND_TO_GROUP(13),
+    RESPONSE_SEND_TO_GROUP(14);
     Byte code;
 
     Command(int code) {

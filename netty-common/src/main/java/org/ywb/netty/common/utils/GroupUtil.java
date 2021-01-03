@@ -50,7 +50,8 @@ public class GroupUtil {
 
 
     public static Set<Channel> channelList(String groupName) {
-        return GROUP.get(groupName);
+        return Optional.ofNullable(GROUP.get(groupName))
+                .orElse(new HashSet<>());
     }
 
     public static boolean quitGroup(String quitGroup, Channel channel) {

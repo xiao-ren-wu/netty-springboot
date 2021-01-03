@@ -21,5 +21,17 @@ public enum ConsoleCommand {
     /**
      * 加入群组
      */
-    joinGroup, quitGroup, groupList;
+    joinGroup,
+    /**
+     * 退出群聊
+     */
+    quitGroup,
+    /**
+     * 获取群组列表
+     */
+    groupList,
+    /**
+     * 发送消息到群组
+     */
+    sendToGroup;
 }

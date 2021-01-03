@@ -1,7 +1,6 @@
 package org.ywb.netty.client.bootstrap;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,11 +14,9 @@ import org.springframework.stereotype.Component;
 import org.ywb.netty.client.config.properties.NettyClientProperties;
 import org.ywb.netty.client.console.ConsoleCommandExecManager;
 import org.ywb.netty.client.handler.*;
-import org.ywb.netty.common.codec.PacketCodeC;
 import org.ywb.netty.common.handler.PacketDecodeHandler;
 import org.ywb.netty.common.handler.PacketEncodeHandler;
 import org.ywb.netty.common.handler.Splitter;
-import org.ywb.netty.common.packet.request.MessageRequestPacket;
 
 import javax.annotation.Resource;
 import java.util.Scanner;
@@ -62,13 +59,13 @@ public class NettyClient implements CommandLineRunner {
                                 .addLast(new QuitGroupResponseHandler())
                                 .addLast(new GroupListResponseHandler())
                                 .addLast(new MessageResponseHandler())
+                                .addLast(new SendToGroupResponseHandler())
                                 .addLast(new PacketEncodeHandler());
                     }
                 });
 
         connect(bootstrap, nettyClientProperties.getHost(), nettyClientProperties.getPort(), 1);
     }
-
 
     private void connect(Bootstrap bootstrap, String host, int port, int retry) {
         bootstrap.connect(host, port)
